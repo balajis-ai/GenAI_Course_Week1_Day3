@@ -1,4 +1,5 @@
 import pyautogui
+import pyscreeze
 import time
 from datetime import datetime
 
@@ -20,13 +21,18 @@ time.sleep(1)
 pyautogui.press('enter')
 time.sleep(2)
 
-print("Step 3: Copy the data..")
+print("Step 3: Take screenshot..")
+pyautogui.screenshot().save(f'daily_report_screenshot_{datetime.now().strftime("%Y%m%d_%H%M%S")}.png')
+time.sleep(1)
+
+
+print("Step 4: Copy the data..")
 pyautogui.hotkey('ctrl', 'a')  # Select all content
 time.sleep(1)
 pyautogui.hotkey('ctrl', 'c')  # Copy the selected content
 time.sleep(1)
 
-print("Step 4: Open Excel and paste the data..")
+print("Step 5: Open Excel and paste the data..")
 pyautogui.hotkey('win', 'r')
 time.sleep(1)
 pyautogui.typewrite('excel\n', interval=0.1)
@@ -44,19 +50,19 @@ pyautogui.typewrite(current_datetime + '\t' + "Good for outdoor activities", int
 pyautogui.press('enter')  # Move to the next row after entering the data
 pyautogui.hotkey('ctrl', 'v')
 time.sleep(5)
-save_path = f"C:\\GenAITasks\\daily_report_bot\\Daily_Report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx"
+save_path = f"D:\\GenAI\\Git_VScode_Week1_Day3_Project\\pyautogui_automation\\Daily_Report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx"
 
-print("Step 5: Save Excel file..    ")
+print("Step 6: Save Excel file..    ")
 pyautogui.hotkey('Fn', 'f12')
 time.sleep(5)
 pyautogui.typewrite(save_path, interval=0.1)
 pyautogui.press('enter')
 time.sleep(5)
 
-print("Step 6: Close the Excel file..")
+print("Step 7: Close the Excel file..")
 time.sleep(1)
 pyautogui.hotkey('Alt', 'f4')
 
-print("Step 7: Close the Browser..")
+print("Step 8: Close the Browser..")
 time.sleep(1)
 pyautogui.hotkey('Alt', 'f4')
